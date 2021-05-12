@@ -9,9 +9,9 @@ namespace Lab3_SqlDatabase.Repositories
     {
         private BookStores_Lab2_NareeratContext _context;
 
-        public CategoryRepository(DbContext context) : base(context)
+        public CategoryRepository( BookStores_Lab2_NareeratContext context) : base(context)
         {
-            _context = new BookStores_Lab2_NareeratContext();
+            _context = context;
         }
 
         public Category GetCategoryByName(string name)

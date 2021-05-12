@@ -24,6 +24,7 @@ namespace Lab3_SqlDatabase
 
         private void bt_Summit_Click(object sender, EventArgs e)
         {
+            
             var category = _unitOfWork.Category.GetCategoryByName(CategoryTextBox.Text.Trim());
           if(category == null)
           {
@@ -53,6 +54,12 @@ namespace Lab3_SqlDatabase
             _unitOfWork.Books.Add(_book);
             _unitOfWork.Complete();
 
+        }
+
+
+        private void bt_Cancel_Click(object sender, EventArgs e)
+        {
+           Close();
         }
     }
 }

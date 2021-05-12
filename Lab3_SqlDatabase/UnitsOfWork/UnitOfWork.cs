@@ -11,9 +11,9 @@ namespace Lab3_SqlDatabase.UnitOfWork
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly DbContext _context;
+        private readonly BookStores_Lab2_NareeratContext _context;
 
-        public UnitOfWork(DbContext context)
+        public UnitOfWork(BookStores_Lab2_NareeratContext context)
         {
             _context = context;
             Books = new BookRepository(_context);

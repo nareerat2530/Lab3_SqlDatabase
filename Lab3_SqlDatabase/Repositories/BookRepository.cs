@@ -11,9 +11,9 @@ namespace Lab3_SqlDatabase.Repositories
     public class BookRepository : Repository<Book>, IBookRepository
     {
         private BookStores_Lab2_NareeratContext _context;
-        public BookRepository(DbContext context) : base(context)
+        public BookRepository( BookStores_Lab2_NareeratContext context) : base(context)
         {
-            _context = new BookStores_Lab2_NareeratContext();
+            _context = context;
         }
 
         public IEnumerable<Book> GetBookWithAuthorAndCategory()
@@ -29,6 +29,11 @@ namespace Lab3_SqlDatabase.Repositories
         public Book GetBookWithISBN(string isbn)
         {
             return _context.Books.FirstOrDefault(b => b.IsbnId == isbn);
+        }
+
+        public Book GetBookWithTitle(string title)
+        {
+            return _context.Books.FirstOrDefault(b => b.Title == title);
         }
     }
 }

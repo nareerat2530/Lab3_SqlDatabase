@@ -10,7 +10,7 @@ namespace Lab3_SqlDatabase.Repositories
 {
     public class AuthorRepository : Repository<Author>, IAuthorRepository
     {
-        public AuthorRepository(DbContext context) : base(context)
+        public AuthorRepository( BookStores_Lab2_NareeratContext context) : base(context)
         {
 
         }

@@ -10,7 +10,7 @@ namespace Lab3_SqlDatabase.Repositories
 {
     class ShopRepository : Repository<Shop>, IShopRepository
     {
-        public ShopRepository(DbContext context) : base(context)
+        public ShopRepository( BookStores_Lab2_NareeratContext context) : base(context)
         {
 
         }

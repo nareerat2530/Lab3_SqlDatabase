@@ -10,5 +10,7 @@ namespace Lab3_SqlDatabase.Interfaces
     {
         IEnumerable<Book> GetBookWithAuthorAndCategory();
         Book GetBookWithISBN(string isbn);
+
+        Book GetBookWithTitle(string title);
     }
 }

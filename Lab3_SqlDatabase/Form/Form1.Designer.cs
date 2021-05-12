@@ -31,6 +31,8 @@ namespace Lab3_SqlDatabase
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new System.Windows.Forms.TreeView();
+            this.bt_RemoveAuthor = new System.Windows.Forms.Button();
+            this.bt_AddAuthor = new System.Windows.Forms.Button();
             this.bt_Exit = new System.Windows.Forms.Button();
             this.bt_Removebook = new System.Windows.Forms.Button();
             this.bt_Addbook = new System.Windows.Forms.Button();
@@ -54,12 +56,14 @@ namespace Lab3_SqlDatabase
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.bt_RemoveAuthor);
+            this.splitContainer1.Panel2.Controls.Add(this.bt_AddAuthor);
             this.splitContainer1.Panel2.Controls.Add(this.bt_Exit);
             this.splitContainer1.Panel2.Controls.Add(this.bt_Removebook);
             this.splitContainer1.Panel2.Controls.Add(this.bt_Addbook);
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
             this.splitContainer1.Size = new System.Drawing.Size(686, 390);
-            this.splitContainer1.SplitterDistance = 228;
+            this.splitContainer1.SplitterDistance = 227;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -71,20 +75,39 @@ namespace Lab3_SqlDatabase
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
+            // bt_RemoveAuthor
+            // 
+            this.bt_RemoveAuthor.Location = new System.Drawing.Point(179, 348);
+            this.bt_RemoveAuthor.Name = "bt_RemoveAuthor";
+            this.bt_RemoveAuthor.Size = new System.Drawing.Size(102, 30);
+            this.bt_RemoveAuthor.TabIndex = 5;
+            this.bt_RemoveAuthor.Text = "Remove Author";
+            this.bt_RemoveAuthor.UseVisualStyleBackColor = true;
+            // 
+            // bt_AddAuthor
+            // 
+            this.bt_AddAuthor.Location = new System.Drawing.Point(98, 348);
+            this.bt_AddAuthor.Name = "bt_AddAuthor";
+            this.bt_AddAuthor.Size = new System.Drawing.Size(75, 30);
+            this.bt_AddAuthor.TabIndex = 4;
+            this.bt_AddAuthor.Text = "Add Author";
+            this.bt_AddAuthor.UseVisualStyleBackColor = true;
+            // 
             // bt_Exit
             // 
-            this.bt_Exit.Location = new System.Drawing.Point(363, 350);
+            this.bt_Exit.Location = new System.Drawing.Point(380, 348);
             this.bt_Exit.Name = "bt_Exit";
-            this.bt_Exit.Size = new System.Drawing.Size(64, 20);
+            this.bt_Exit.Size = new System.Drawing.Size(64, 30);
             this.bt_Exit.TabIndex = 3;
             this.bt_Exit.Text = "Exit";
             this.bt_Exit.UseVisualStyleBackColor = true;
+            this.bt_Exit.Click += new System.EventHandler(this.bt_Exit_Click);
             // 
             // bt_Removebook
             // 
-            this.bt_Removebook.Location = new System.Drawing.Point(219, 349);
+            this.bt_Removebook.Location = new System.Drawing.Point(287, 348);
             this.bt_Removebook.Name = "bt_Removebook";
-            this.bt_Removebook.Size = new System.Drawing.Size(87, 22);
+            this.bt_Removebook.Size = new System.Drawing.Size(87, 30);
             this.bt_Removebook.TabIndex = 2;
             this.bt_Removebook.Text = "Remove Book";
             this.bt_Removebook.UseVisualStyleBackColor = true;
@@ -92,9 +115,9 @@ namespace Lab3_SqlDatabase
             // 
             // bt_Addbook
             // 
-            this.bt_Addbook.Location = new System.Drawing.Point(95, 349);
+            this.bt_Addbook.Location = new System.Drawing.Point(17, 348);
             this.bt_Addbook.Name = "bt_Addbook";
-            this.bt_Addbook.Size = new System.Drawing.Size(75, 22);
+            this.bt_Addbook.Size = new System.Drawing.Size(75, 30);
             this.bt_Addbook.TabIndex = 1;
             this.bt_Addbook.Text = "Add Book";
             this.bt_Addbook.UseVisualStyleBackColor = true;
@@ -120,6 +143,7 @@ namespace Lab3_SqlDatabase
             this.Controls.Add(this.splitContainer1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Activated += new System.EventHandler(this.Form1_Activated);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -129,6 +153,8 @@ namespace Lab3_SqlDatabase
             this.ResumeLayout(false);
         }
 
+        private System.Windows.Forms.Button bt_RemoveAuthor;
+
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
@@ -137,6 +163,7 @@ namespace Lab3_SqlDatabase
         private System.Windows.Forms.Button bt_Addbook;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button bt_Exit;
+        private System.Windows.Forms.Button bt_AddAuthor;
     }
 }
 

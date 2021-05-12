@@ -11,9 +11,9 @@ namespace Lab3_SqlDatabase.Repositories
 {
     public class Repository<Tentity> : IRepository<Tentity> where Tentity : class
     {
-        protected readonly DbContext context;
+        protected readonly BookStores_Lab2_NareeratContext context;
 
-        public Repository(DbContext context)
+        public Repository( BookStores_Lab2_NareeratContext context)
         {
             this.context = context;
         }

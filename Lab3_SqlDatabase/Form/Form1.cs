@@ -16,12 +16,14 @@ namespace Lab3_SqlDatabase
         private List<Stock> stocks;
         private UnitOfWork.UnitOfWork unitOfWork;
         private Author _authorIsActive;
+        private Shop _shopIsActive;
 
 
         public Form1()
         {
             InitializeComponent();
         }
+        
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -43,12 +45,12 @@ namespace Lab3_SqlDatabase
 
                 foreach (var author in authors)
                 {
-                    var authorNodes = new TreeNode
+                    var writer = new TreeNode
                     {
                         Text = author.FirstName +" "+ author.LastName,
                         Tag = author
                     };
-                    authorNode.Nodes.Add(authorNodes);
+                    authorNode.Nodes.Add(writer);
                 }
 
                 TreeNode shopNode = new()
@@ -80,19 +82,34 @@ namespace Lab3_SqlDatabase
         {
             dataGridView1.Rows.Clear();
             dataGridView1.Columns.Clear();
-            if (e.Node.Parent is null) return;
-            switch (e.Node.Tag)
-            {
-                case Shop shops:
-                {
-                    dataGridView1.Columns.Add("Name", "Name");
-                    dataGridView1.Columns.Add("ISBN", "ISBN");
-                    dataGridView1.Columns.Add("Quantity", "Quantity");
+            bt_RemoveAuthor.Hide();
+            bt_AddAuthor.Hide();
+            bt_Addbook.Hide();
+            bt_Removebook.Hide();
+            var tag = e.Node.Tag;
+            DataGridWriter(tag);
+        }
 
+        public void DataGridWriter(Object o)
+        {
+            dataGridView1.Show();
+            treeView1.Refresh();
+            if (o is null) return;
+            switch (o)
+            {
+                case Shop shop:
+                {
+                    bt_Addbook.Show();
+                    bt_Removebook.Show();
+                    _shopIsActive = shop;
+                    _authorIsActive = null;
+                    dataGridView1.Columns.Add("ISBN", "ISBN");
+                    dataGridView1.Columns.Add("Name", "Name");
+                    dataGridView1.Columns.Add("Quantity", "Quantity");
 
                     foreach (var book in books)
                     foreach (var stock in stocks)
-                        if (shops.ShopId == stock.ShopId)
+                        if (shop.ShopId == stock.ShopId)
                             if (stock.IsbnId == book.IsbnId)
                             {
                                 var rowIndex = dataGridView1.Rows.Add();
@@ -105,10 +122,14 @@ namespace Lab3_SqlDatabase
                 }
                 case Author author:
                 {
+                    bt_AddAuthor.Show();
+                    bt_RemoveAuthor.Show();
+                    bt_Addbook.Show();
+                    bt_Removebook.Show();
                     _authorIsActive = author;
-                    dataGridView1.Columns.Add("Title", "Title");
-                    dataGridView1.Columns.Add("Category", "Category");
                     dataGridView1.Columns.Add("ISBN", "ISBN");
+                    dataGridView1.Columns.Add("Category", "Category");
+                    dataGridView1.Columns.Add("Title", "Title");
 
                     var booksWithAuthorAndCategory = unitOfWork.Books.GetBookWithAuthorAndCategory();
                     foreach (var book in booksWithAuthorAndCategory)
@@ -128,17 +149,70 @@ namespace Lab3_SqlDatabase
 
         private void bt_Removebook_Click(object sender, EventArgs e)
         {
-            var isbn = dataGridView1.SelectedCells[2].Value.ToString();
+            if (dataGridView1.CurrentCell == null) return;
+            var removeBook = dataGridView1.CurrentCell.RowIndex;
+            string? isbn;
+            if (_authorIsActive == null)
+            {
+                if (dataGridView1.SelectedCells[0].Value != null)
+                {
+                    isbn = dataGridView1.SelectedCells[0].Value.ToString();
+                    var stock = unitOfWork.Stocks.GetStockByIsbnAndShopId(isbn,_shopIsActive.ShopId );
+                    
+                    dataGridView1.Rows.RemoveAt(removeBook);
+                    stocks.RemoveAll(s => s.ShopId == _shopIsActive.ShopId && s.IsbnId == isbn );
+                    unitOfWork.Stocks.Remove(stock);
+                    unitOfWork.Complete();
+                    
+                    return;
+                }
+            }
+
+            isbn = dataGridView1.SelectedCells[0].Value.ToString();
             var book = unitOfWork.Books.GetBookWithISBN(isbn);
+            books.RemoveAll(b => b.IsbnId == book.IsbnId);
             unitOfWork.Books.Remove(book);
             unitOfWork.Complete();
+            
             
         }
 
         private void bt_Addbook_Click(object sender, EventArgs e)
         {
+            
+            if (_authorIsActive == null)
+            {
+                var addExitBook = new AddExistBook(_shopIsActive);
+                addExitBook.Show();
+                return;
+                
+            }
             var addBook = new AddbookForm(_authorIsActive);
             addBook.Show();
+            
+                
+            dataGridView1.Hide();
+            
+            
+            
+        }
+
+        private void bt_Exit_Click(object sender, EventArgs e)
+        {
+            DialogResult exitButton;
+            exitButton = MessageBox.Show("Confirm if you want to exit", "Save DataGirdView", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Information);
+            if (exitButton == DialogResult.Yes) Application.Exit();
+        }
+
+
+        private void Form1_Activated(object sender, EventArgs e)
+        {
+            dataGridView1.Hide();
+           books = unitOfWork.Books.GetAll().ToList();
+           authors = unitOfWork.Authors.GetAll().ToList();
+           shops = unitOfWork.Shops.GetAll().ToList();
+           stocks = unitOfWork.Stocks.GetAll().ToList();
         }
     }
 }

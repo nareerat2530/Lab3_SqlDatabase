@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Lab3_SqlDatabase
 {
-    public partial class Order
+    public class Order
     {
         public Order()
         {

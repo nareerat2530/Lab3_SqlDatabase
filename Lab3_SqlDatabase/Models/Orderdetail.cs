@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-#nullable disable
+﻿#nullable disable
 
 namespace Lab3_SqlDatabase
 {
-    public partial class Orderdetail
+    public class Orderdetail
     {
         public int Id { get; set; }
         public int? OrderId { get; set; }

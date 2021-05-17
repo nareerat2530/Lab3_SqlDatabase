@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-#nullable disable
+﻿#nullable disable
 
 namespace Lab3_SqlDatabase
 {
-    public partial class BooksAuthor
+    public class BooksAuthor
     {
         public int BaId { get; set; }
         public string IsbnId { get; set; }

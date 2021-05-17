@@ -5,14 +5,14 @@ using System.Collections.Generic;
 
 namespace Lab3_SqlDatabase
 {
-    public partial class Author
+    public class Author
     {
         public Author()
         {
             BooksAuthors = new HashSet<BooksAuthor>();
         }
 
-        public int AuthorId { get; set; }
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime? Birthday { get; set; }

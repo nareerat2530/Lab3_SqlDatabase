@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Lab3_SqlDatabase.Interfaces
 {
@@ -10,12 +6,14 @@ namespace Lab3_SqlDatabase.Interfaces
     {
         TEntity Get(int id);
         IEnumerable<TEntity> GetAll();
-        
+
         void Add(TEntity entity);
         void AddRange(IEnumerable<TEntity> entities);
-        
+
         void Remove(TEntity entity);
         void RemoveRange(IEnumerable<TEntity> entities);
+
+        void Update(TEntity entity);
 
     }
 }

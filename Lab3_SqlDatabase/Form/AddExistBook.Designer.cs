@@ -60,7 +60,7 @@ namespace Lab3_SqlDatabase
             // 
             this.label_ShopName.Location = new System.Drawing.Point(12, 25);
             this.label_ShopName.Name = "label_ShopName";
-            this.label_ShopName.Size = new System.Drawing.Size(100, 23);
+            this.label_ShopName.Size = new System.Drawing.Size(198, 23);
             this.label_ShopName.TabIndex = 3;
             this.label_ShopName.Text = "label1";
             // 
@@ -90,6 +90,7 @@ namespace Lab3_SqlDatabase
             this.Controls.Add(this.bt_Add);
             this.Controls.Add(this.LstBox_Booklist);
             this.Name = "AddExistBook";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddExistBook";
             this.Load += new System.EventHandler(this.AddExistBook_Load);
             this.ResumeLayout(false);

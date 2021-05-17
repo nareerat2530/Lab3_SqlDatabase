@@ -1,11 +1,6 @@
-﻿
-using Lab3_SqlDatabase.Interfaces;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Lab3_SqlDatabase.Interfaces;
 
 namespace Lab3_SqlDatabase.Repositories
 {
@@ -13,10 +8,11 @@ namespace Lab3_SqlDatabase.Repositories
     {
         protected readonly BookStores_Lab2_NareeratContext context;
 
-        public Repository( BookStores_Lab2_NareeratContext context)
+        public Repository(BookStores_Lab2_NareeratContext context)
         {
             this.context = context;
         }
+
         public Tentity Get(int id)
         {
             return context.Set<Tentity>().Find(id);
@@ -47,6 +43,9 @@ namespace Lab3_SqlDatabase.Repositories
             context.Set<Tentity>().RemoveRange(entities);
         }
 
-        
+        public void Update(Tentity entity)
+        {
+            context.Update(entity);
+        }
     }
 }

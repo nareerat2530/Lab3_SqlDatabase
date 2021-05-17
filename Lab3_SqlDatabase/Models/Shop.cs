@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 #nullable disable
 
 namespace Lab3_SqlDatabase
 {
-    public partial class Shop
+    public class Shop
     {
         public Shop()
         {

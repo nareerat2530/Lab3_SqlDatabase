@@ -1,37 +1,22 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.Configuration;
-using System.IO;
 
 #nullable disable
 
 namespace Lab3_SqlDatabase
 {
-    public partial class BookStores_Lab2_NareeratContext : DbContext
+    public class BookStores_Lab2_NareeratContext : DbContext
     {
         private string connectionString;
 
         public BookStores_Lab2_NareeratContext()
         {
-           
         }
 
         public BookStores_Lab2_NareeratContext(DbContextOptions<BookStores_Lab2_NareeratContext> options)
             : base(options)
         {
-            
-        }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-                var builder = new ConfigurationBuilder();
-                builder.AddJsonFile("appsettings.json");
-                var configuration = builder.Build();
-                connectionString = configuration.GetConnectionString("DefaultConnection");
-                optionsBuilder.UseSqlServer(connectionString);
-            }
         }
 
         public virtual DbSet<Author> Authors { get; set; }
@@ -47,7 +32,18 @@ namespace Lab3_SqlDatabase
         public virtual DbSet<TitlarPerFörfattaren> TitlarPerFörfattarens { get; set; }
         public virtual DbSet<TopThreeCustomer> TopThreeCustomers { get; set; }
 
-      
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                var builder = new ConfigurationBuilder();
+                builder.AddJsonFile("appsettings.json");
+                var configuration = builder.Build();
+                connectionString = configuration.GetConnectionString("DefaultConnection");
+                optionsBuilder.UseSqlServer(connectionString);
+            }
+        }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -57,7 +53,7 @@ namespace Lab3_SqlDatabase
             {
                 entity.ToTable("Author");
 
-                entity.Property(e => e.AuthorId).ValueGeneratedNever();
+                entity.Property(e => e.Id);
 
                 entity.Property(e => e.Birthday).HasColumnType("date");
 
@@ -80,7 +76,7 @@ namespace Lab3_SqlDatabase
                     .HasMaxLength(13)
                     .IsUnicode(false)
                     .HasColumnName("ISBN_Id")
-                    .IsFixedLength(true);
+                    .IsFixedLength();
 
                 entity.Property(e => e.Language)
                     .HasMaxLength(50)
@@ -102,7 +98,7 @@ namespace Lab3_SqlDatabase
 
             modelBuilder.Entity<BooksAuthor>(entity =>
             {
-                entity.HasKey(e => new { e.BaId, e.IsbnId, e.AuthorId })
+                entity.HasKey(e => new {e.BaId, e.IsbnId, e.AuthorId})
                     .HasName("PK__Books_Au__EF4550CE5E94A813");
 
                 entity.ToTable("Books_Authors");
@@ -113,24 +109,24 @@ namespace Lab3_SqlDatabase
                     .HasMaxLength(13)
                     .IsUnicode(false)
                     .HasColumnName("ISBN_Id")
-                    .IsFixedLength(true);
+                    .IsFixedLength();
 
                 entity.HasOne(d => d.Author)
                     .WithMany(p => p.BooksAuthors)
                     .HasForeignKey(d => d.AuthorId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK__Books_Aut__Autho__52593CB8");
 
                 entity.HasOne(d => d.Isbn)
                     .WithMany(p => p.BooksAuthors)
                     .HasForeignKey(d => d.IsbnId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK__Books_Aut__ISBN___534D60F1");
             });
 
             modelBuilder.Entity<Category>(entity =>
             {
-                entity.Property(e => e.CategoryId).ValueGeneratedNever();
+                entity.Property(e => e.Id);
 
                 entity.Property(e => e.CategoryName)
                     .IsRequired()
@@ -211,7 +207,7 @@ namespace Lab3_SqlDatabase
                     .HasMaxLength(13)
                     .IsUnicode(false)
                     .HasColumnName("ISBN_Id")
-                    .IsFixedLength(true);
+                    .IsFixedLength();
 
                 entity.Property(e => e.UnitPrice).HasColumnType("decimal(10, 2)");
 
@@ -294,19 +290,19 @@ namespace Lab3_SqlDatabase
 
             modelBuilder.Entity<Stock>(entity =>
             {
-                entity.HasKey(e => new { e.ShopId, e.IsbnId })
+                entity.HasKey(e => new {e.ShopId, e.IsbnId})
                     .HasName("PK__Stocks__D00C2A2317330D0F");
 
                 entity.Property(e => e.IsbnId)
                     .HasMaxLength(13)
                     .IsUnicode(false)
                     .HasColumnName("ISBN_Id")
-                    .IsFixedLength(true);
+                    .IsFixedLength();
 
                 entity.HasOne(d => d.Isbn)
                     .WithMany(p => p.Stocks)
                     .HasForeignKey(d => d.IsbnId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .OnDelete(DeleteBehavior.Cascade)
                     .HasConstraintName("FK__Stocks__ISBN_Id__47DBAE45");
             });
 
@@ -345,6 +341,9 @@ namespace Lab3_SqlDatabase
             OnModelCreatingPartial(modelBuilder);
         }
 
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+        private void OnModelCreatingPartial(ModelBuilder modelBuilder)
+        {
+           
+        }
     }
 }

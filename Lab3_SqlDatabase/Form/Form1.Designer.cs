@@ -63,7 +63,7 @@ namespace Lab3_SqlDatabase
             this.splitContainer1.Panel2.Controls.Add(this.bt_Addbook);
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
             this.splitContainer1.Size = new System.Drawing.Size(686, 390);
-            this.splitContainer1.SplitterDistance = 227;
+            this.splitContainer1.SplitterDistance = 226;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -83,6 +83,7 @@ namespace Lab3_SqlDatabase
             this.bt_RemoveAuthor.TabIndex = 5;
             this.bt_RemoveAuthor.Text = "Remove Author";
             this.bt_RemoveAuthor.UseVisualStyleBackColor = true;
+            this.bt_RemoveAuthor.Click += new System.EventHandler(this.bt_RemoveAuthor_Click);
             // 
             // bt_AddAuthor
             // 
@@ -92,6 +93,7 @@ namespace Lab3_SqlDatabase
             this.bt_AddAuthor.TabIndex = 4;
             this.bt_AddAuthor.Text = "Add Author";
             this.bt_AddAuthor.UseVisualStyleBackColor = true;
+            this.bt_AddAuthor.Click += new System.EventHandler(this.bt_AddAuthor_Click);
             // 
             // bt_Exit
             // 
@@ -134,6 +136,7 @@ namespace Lab3_SqlDatabase
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(452, 322);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
             // Form1
             // 
@@ -142,6 +145,7 @@ namespace Lab3_SqlDatabase
             this.ClientSize = new System.Drawing.Size(686, 390);
             this.Controls.Add(this.splitContainer1);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Activated += new System.EventHandler(this.Form1_Activated);
             this.Load += new System.EventHandler(this.Form1_Load);

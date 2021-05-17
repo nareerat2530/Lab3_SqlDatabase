@@ -41,6 +41,7 @@ namespace Lab3_SqlDatabase
             this.label_Title = new System.Windows.Forms.Label();
             this.TitleTextBox = new System.Windows.Forms.TextBox();
             this.Category = new System.Windows.Forms.Label();
+            this.Label_Author = new System.Windows.Forms.Label();
             this.bt_Summit = new System.Windows.Forms.Button();
             this.bt_Cancel = new System.Windows.Forms.Button();
             this.gb_Bookdetails.SuspendLayout();
@@ -59,9 +60,9 @@ namespace Lab3_SqlDatabase
             this.gb_Bookdetails.Controls.Add(this.label_Title);
             this.gb_Bookdetails.Controls.Add(this.TitleTextBox);
             this.gb_Bookdetails.Controls.Add(this.Category);
-            this.gb_Bookdetails.Location = new System.Drawing.Point(10, 20);
+            this.gb_Bookdetails.Location = new System.Drawing.Point(10, 61);
             this.gb_Bookdetails.Name = "gb_Bookdetails";
-            this.gb_Bookdetails.Size = new System.Drawing.Size(240, 212);
+            this.gb_Bookdetails.Size = new System.Drawing.Size(268, 243);
             this.gb_Bookdetails.TabIndex = 2;
             this.gb_Bookdetails.TabStop = false;
             this.gb_Bookdetails.Text = "Book Details";
@@ -69,7 +70,7 @@ namespace Lab3_SqlDatabase
             // Language
             // 
             this.Language.AutoSize = true;
-            this.Language.Location = new System.Drawing.Point(7, 179);
+            this.Language.Location = new System.Drawing.Point(0, 205);
             this.Language.Name = "Language";
             this.Language.Size = new System.Drawing.Size(55, 13);
             this.Language.TabIndex = 13;
@@ -77,14 +78,14 @@ namespace Lab3_SqlDatabase
             // 
             // LanguageTextBox
             // 
-            this.LanguageTextBox.Location = new System.Drawing.Point(89, 176);
+            this.LanguageTextBox.Location = new System.Drawing.Point(89, 202);
             this.LanguageTextBox.Name = "LanguageTextBox";
             this.LanguageTextBox.Size = new System.Drawing.Size(145, 20);
             this.LanguageTextBox.TabIndex = 12;
             // 
             // PriceTextBox
             // 
-            this.PriceTextBox.Location = new System.Drawing.Point(89, 140);
+            this.PriceTextBox.Location = new System.Drawing.Point(89, 164);
             this.PriceTextBox.Name = "PriceTextBox";
             this.PriceTextBox.Size = new System.Drawing.Size(145, 20);
             this.PriceTextBox.TabIndex = 11;
@@ -92,7 +93,7 @@ namespace Lab3_SqlDatabase
             // label_Price
             // 
             this.label_Price.AutoSize = true;
-            this.label_Price.Location = new System.Drawing.Point(7, 146);
+            this.label_Price.Location = new System.Drawing.Point(4, 167);
             this.label_Price.Name = "label_Price";
             this.label_Price.Size = new System.Drawing.Size(31, 13);
             this.label_Price.TabIndex = 10;
@@ -101,7 +102,7 @@ namespace Lab3_SqlDatabase
             // label_Isbn
             // 
             this.label_Isbn.AutoSize = true;
-            this.label_Isbn.Location = new System.Drawing.Point(5, 104);
+            this.label_Isbn.Location = new System.Drawing.Point(6, 127);
             this.label_Isbn.Name = "label_Isbn";
             this.label_Isbn.Size = new System.Drawing.Size(32, 13);
             this.label_Isbn.TabIndex = 9;
@@ -109,14 +110,14 @@ namespace Lab3_SqlDatabase
             // 
             // ISBNTextBox
             // 
-            this.ISBNTextBox.Location = new System.Drawing.Point(89, 101);
+            this.ISBNTextBox.Location = new System.Drawing.Point(89, 124);
             this.ISBNTextBox.Name = "ISBNTextBox";
             this.ISBNTextBox.Size = new System.Drawing.Size(145, 20);
             this.ISBNTextBox.TabIndex = 8;
             // 
             // CategoryTextBox
             // 
-            this.CategoryTextBox.Location = new System.Drawing.Point(89, 68);
+            this.CategoryTextBox.Location = new System.Drawing.Point(89, 84);
             this.CategoryTextBox.Name = "CategoryTextBox";
             this.CategoryTextBox.Size = new System.Drawing.Size(145, 20);
             this.CategoryTextBox.TabIndex = 7;
@@ -124,7 +125,7 @@ namespace Lab3_SqlDatabase
             // Title
             // 
             this.Title.AutoSize = true;
-            this.Title.Location = new System.Drawing.Point(2, 26);
+            this.Title.Location = new System.Drawing.Point(4, 35);
             this.Title.Name = "Title";
             this.Title.Size = new System.Drawing.Size(27, 13);
             this.Title.TabIndex = 6;
@@ -141,7 +142,7 @@ namespace Lab3_SqlDatabase
             // 
             // TitleTextBox
             // 
-            this.TitleTextBox.Location = new System.Drawing.Point(89, 23);
+            this.TitleTextBox.Location = new System.Drawing.Point(89, 32);
             this.TitleTextBox.Multiline = true;
             this.TitleTextBox.Name = "TitleTextBox";
             this.TitleTextBox.Size = new System.Drawing.Size(145, 32);
@@ -150,15 +151,23 @@ namespace Lab3_SqlDatabase
             // Category
             // 
             this.Category.AutoSize = true;
-            this.Category.Location = new System.Drawing.Point(5, 70);
+            this.Category.Location = new System.Drawing.Point(4, 87);
             this.Category.Name = "Category";
             this.Category.Size = new System.Drawing.Size(49, 13);
             this.Category.TabIndex = 3;
             this.Category.Text = "Category";
             // 
+            // Label_Author
+            // 
+            this.Label_Author.Location = new System.Drawing.Point(12, 21);
+            this.Label_Author.Name = "Label_Author";
+            this.Label_Author.Size = new System.Drawing.Size(100, 23);
+            this.Label_Author.TabIndex = 14;
+            this.Label_Author.Text = "label1";
+            // 
             // bt_Summit
             // 
-            this.bt_Summit.Location = new System.Drawing.Point(10, 257);
+            this.bt_Summit.Location = new System.Drawing.Point(16, 319);
             this.bt_Summit.Name = "bt_Summit";
             this.bt_Summit.Size = new System.Drawing.Size(92, 20);
             this.bt_Summit.TabIndex = 3;
@@ -168,7 +177,7 @@ namespace Lab3_SqlDatabase
             // 
             // bt_Cancel
             // 
-            this.bt_Cancel.Location = new System.Drawing.Point(159, 257);
+            this.bt_Cancel.Location = new System.Drawing.Point(186, 319);
             this.bt_Cancel.Name = "bt_Cancel";
             this.bt_Cancel.Size = new System.Drawing.Size(92, 20);
             this.bt_Cancel.TabIndex = 4;
@@ -180,16 +189,20 @@ namespace Lab3_SqlDatabase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(317, 295);
+            this.ClientSize = new System.Drawing.Size(317, 351);
+            this.Controls.Add(this.Label_Author);
             this.Controls.Add(this.bt_Cancel);
             this.Controls.Add(this.bt_Summit);
             this.Controls.Add(this.gb_Bookdetails);
             this.Name = "AddbookForm";
             this.Text = "AddbookForm";
+            this.Load += new System.EventHandler(this.AddbookForm_Load);
             this.gb_Bookdetails.ResumeLayout(false);
             this.gb_Bookdetails.PerformLayout();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Label Label_Author;
 
         private System.Windows.Forms.Label Language;
         private System.Windows.Forms.TextBox LanguageTextBox;

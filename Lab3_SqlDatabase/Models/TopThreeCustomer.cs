@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-#nullable disable
+﻿#nullable disable
 
 namespace Lab3_SqlDatabase
 {
-    public partial class TopThreeCustomer
+    public class TopThreeCustomer
     {
         public int CustomerId { get; set; }
         public string Name { get; set; }

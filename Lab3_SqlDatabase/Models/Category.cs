@@ -11,7 +11,7 @@ namespace Lab3_SqlDatabase
             Books = new HashSet<Book>();
         }
 
-        public int? Id { get; set; }
+        public int? CategoryId { get; set; }
         public string CategoryName { get; set; }
 
         public virtual ICollection<Book> Books { get; set; }

@@ -34,7 +34,7 @@ namespace Lab3_SqlDatabase
                 {
                     Title = TitleTextBox.Text.Trim(),
                     IsbnId = ISBNTextBox.Text.Trim(),
-                    CategoryId = category.Id,
+                    CategoryId = category.CategoryId,
                     Category = category,
                     Language = LanguageTextBox.Text.Trim(),
                     Price = decimal.Parse(PriceTextBox.Text)
@@ -49,7 +49,7 @@ namespace Lab3_SqlDatabase
             var booksAuthor = new BooksAuthor
             {
                 IsbnId = book.IsbnId,
-                AuthorId = _author.Id,
+                AuthorId = _author.AuthorId,
                 Isbn = book
             };
 

@@ -12,7 +12,7 @@ namespace Lab3_SqlDatabase
             BooksAuthors = new HashSet<BooksAuthor>();
         }
 
-        public int Id { get; set; }
+        public int AuthorId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime? Birthday { get; set; }

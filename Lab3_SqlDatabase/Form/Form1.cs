@@ -148,7 +148,7 @@ namespace Lab3_SqlDatabase
                     var booksWithAuthorAndCategory = _unitOfWork.Books.GetBookWithAuthorAndCategory();
                     foreach (var book in booksWithAuthorAndCategory)
                     foreach (var authors in book.BooksAuthors)
-                        if (authors.AuthorId == author.Id)
+                        if (authors.AuthorId == author.AuthorId)
                         {
                             var rowIndex = dataGridView1.Rows.Add();
                             dataGridView1.Rows[rowIndex].Cells["Title"].Value = book.Title;
@@ -208,7 +208,7 @@ namespace Lab3_SqlDatabase
         {
             var author = treeView1.SelectedNode.Tag as Author;
             var bookList = _unitOfWork.Books.GetBookWithAuthorAndCategory();
-            var books = bookList.Where(b => b.BooksAuthors.Any(a => a.AuthorId == author.Id));
+            var books = bookList.Where(b => b.BooksAuthors.Any(a => a.AuthorId == author.AuthorId));
 
             treeView1.Nodes.Remove(treeView1.SelectedNode);
             _unitOfWork.Authors.Remove(author);

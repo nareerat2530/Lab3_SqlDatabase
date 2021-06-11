@@ -15,7 +15,7 @@ namespace Lab3_SqlDatabase.Repositories
 
         public List<BooksAuthor> GetBooksByAuthor(Author author)
         {
-            return _context.BooksAuthors.Where(b => b.AuthorId == author.Id).ToList();
+            return _context.BooksAuthors.Where(b => b.AuthorId == author.AuthorId).ToList();
         }
     }
 }

@@ -53,7 +53,7 @@ namespace Lab3_SqlDatabase
             {
                 entity.ToTable("Author");
 
-                entity.Property(e => e.Id);
+                entity.Property(e => e.AuthorId);
 
                 entity.Property(e => e.Birthday).HasColumnType("date");
 
@@ -126,7 +126,7 @@ namespace Lab3_SqlDatabase
 
             modelBuilder.Entity<Category>(entity =>
             {
-                entity.Property(e => e.Id);
+                entity.Property(e => e.CategoryId);
 
                 entity.Property(e => e.CategoryName)
                     .IsRequired()

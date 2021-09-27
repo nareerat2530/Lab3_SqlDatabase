@@ -1,1 +1,1 @@
-# create a bookstore application with my sql database
+# create a bookstore application with  sql server database
